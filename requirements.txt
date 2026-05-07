@@ -1,0 +1,36 @@
+# MAD-OPD runtime dependencies.
+# Aligned with the environment used on the paper's H20 training cluster.
+
+# --- Core ML stack ---
+torch>=2.6.0
+transformers==4.51.1
+trl>=0.15,<0.25
+peft>=0.11,<0.19
+accelerate>=1.1.0
+datasets>=3.0,<4.0
+safetensors
+tokenizers
+sentencepiece
+
+# --- Training-time infrastructure ---
+ms-swift>=3.8
+deepspeed
+flash-attn>=2.5.6
+liger-kernel
+
+# --- vLLM teacher + sidecar service ---
+vllm>=0.6
+fastapi
+uvicorn
+openai
+requests
+
+# --- Utilities ---
+numpy<2.0
+jsonlines
+PyYAML>=5.4
+math-verify
+
+# --- Experiment tracking (either works via `--report_to`) ---
+tensorboard
+wandb

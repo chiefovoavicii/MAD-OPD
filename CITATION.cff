@@ -1,0 +1,58 @@
+cff-version: 1.2.0
+title: "MAD-OPD: Breaking the Ceiling in On-Policy Distillation via Multi-Agent Debate"
+message: "If you use this software, please cite our paper."
+type: software
+authors:
+  - family-names: Wang
+    given-names: Jianze
+  - family-names: Liu
+    given-names: Ying
+  - family-names: Chen
+    given-names: Jinlong
+  - family-names: Hu
+    given-names: Xuchun
+  - family-names: Zhang
+    given-names: Qilong
+  - family-names: Cao
+    given-names: Yu
+  - family-names: Wang
+    given-names: Jun
+  - family-names: Yang
+    given-names: Hua
+  - family-names: Xie
+    given-names: Yong
+  - family-names: Chen
+    given-names: Qianglong
+preferred-citation:
+  type: article
+  title: "MAD-OPD: Breaking the Ceiling in On-Policy Distillation via Multi-Agent Debate"
+  authors:
+    - family-names: Wang
+      given-names: Jianze
+    - family-names: Liu
+      given-names: Ying
+    - family-names: Chen
+      given-names: Jinlong
+    - family-names: Hu
+      given-names: Xuchun
+    - family-names: Zhang
+      given-names: Qilong
+    - family-names: Cao
+      given-names: Yu
+    - family-names: Wang
+      given-names: Jun
+    - family-names: Yang
+      given-names: Hua
+    - family-names: Xie
+      given-names: Yong
+    - family-names: Chen
+      given-names: Qianglong
+  journal: "arXiv preprint arXiv:2605.01347"
+  year: 2026
+  url: "https://arxiv.org/abs/2605.01347"
+identifiers:
+  - type: other
+    value: "arXiv:2605.01347"
+    description: "arXiv preprint"
+url: "https://arxiv.org/abs/2605.01347"
+license: Apache-2.0

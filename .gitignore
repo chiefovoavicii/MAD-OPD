@@ -1,0 +1,28 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.mypy_cache/
+.pytest_cache/
+
+# Local caches — never commit
+data_cache/
+model_cache/
+outputs/
+logs/
+*.ckpt
+*.pt
+*.safetensors
+wandb/
+tensorboard/
+runs/
+
+# Benchmark clones and local eval outputs
+third_party/
+eval/results/
+
+# IDE / OS
+.DS_Store
+.idea/
+.vscode/
+*.swp
