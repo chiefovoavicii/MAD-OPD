@@ -89,7 +89,7 @@ bash scripts/run_mad_opd.sh
 STUDENT=/path/to/Qwen3-4B \
 TEACHER1=/path/to/Qwen3-14B \
 TEACHER2=/path/to/Qwen3-8B \
-DATASET=./data_cache/toolace/data.jsonl \
+TOOLACE_DATASET_PATH=./data_cache/toolace/data.jsonl \
 OUTPUT=./outputs/my_run \
 bash scripts/run_mad_opd.sh
 
@@ -99,11 +99,15 @@ bash scripts/run_mad_opd.sh \
     --beta 1.0 --code_mode true \
     --max_length 4096 --max_completion_length 16384
 
-# Agentic ToolACE task (multi-turn split + grouped sampler; uses script defaults)
-DATASET=./data_cache/toolace/data.jsonl \
-bash scripts/run_mad_opd.sh \
-    --toolace_mode true --custom_register_path data/toolace_dataset.py
+# Agentic ToolACE task (the default wrapper enables registration, step split,
+# and the grouped sampler automatically)
+TOOLACE_DATASET_PATH=./data_cache/toolace/data.jsonl \
+bash scripts/run_mad_opd.sh
 ```
+
+Setting `DATASET=/path/to/custom.jsonl` bypasses the automatic ToolACE
+registration, which is useful for code and custom datasets. For a ToolACE file
+outside the default location, set `TOOLACE_DATASET_PATH` instead.
 
 Sequence-length presets per task:
 
@@ -164,7 +168,7 @@ Scripts set `per_device_train_batch_size=1`, `gradient_accumulation_steps=16`, y
 | 10           | 8             | **16** *(default)*              |
 
 ```bash
-bash scripts/run_mad_opd.sh --gradient_accumulation_steps 16   # 8-GPU node
+bash scripts/run_mad_opd.sh --gradient_accumulation_steps 16   # 10 GPUs total: 8 train + 2 teacher
 ```
 
 ---

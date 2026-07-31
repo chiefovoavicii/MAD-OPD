@@ -11,8 +11,15 @@ export PYTHONPATH="$PWD" MAD_OPD_AUTO_PATCH=1
 STUDENT=${STUDENT:-Qwen/Qwen3-4B}
 TEACHER1=${TEACHER1:-Qwen/Qwen3-14B}
 TEACHER2=${TEACHER2:-Qwen/Qwen3-8B}
-DATASET=${DATASET:-./data_cache/toolace/data.jsonl}
 OUTPUT=${OUTPUT:-./outputs/mt_opd}
+
+if [[ -z ${DATASET+x} ]]; then
+    export TOOLACE_DATASET_PATH=${TOOLACE_DATASET_PATH:-./data_cache/toolace/data.jsonl}
+    DATASET=toolace
+    DATASET_ARGS=(--toolace_mode true --custom_register_path data/toolace_dataset.py)
+else
+    DATASET_ARGS=()
+fi
 mkdir -p "$OUTPUT"
 
 LAUNCH=$(python scripts/launch_teachers.py --external-teachers false \
@@ -37,7 +44,7 @@ torchrun --nproc_per_node=$(get train_nproc_per_node) --master_port=29500 \
     --rlhf_type gkd --gkd_algorithm mt_opd \
     --model "$STUDENT" --teacher_model "$TEACHER1" --teacher_model_2 "$TEACHER2" \
     --template qwen3 --model_type qwen3 --tuner_type full \
-    --dataset "$DATASET" \
+    --dataset "$DATASET" "${DATASET_ARGS[@]}" \
     --seq_kd false --lmbda 1 --beta 0.5 --teacher_weights 0.5 0.5 \
     --temperature 0.7 --top_p 0.8 --top_k 20 --repetition_penalty 1.2 --enable_thinking false \
     --use_vllm_teachers true \

@@ -34,7 +34,7 @@ def main() -> None:
                         help='Tensor-parallel size for vLLM.')
     parser.add_argument('--temperature', type=float, default=0.7)
     parser.add_argument('--top_p', type=float, default=0.8)
-    parser.add_argument('--max_new_tokens', type=int, default=4096)
+    parser.add_argument('--max_new_tokens', type=int, default=16384)
     parser.add_argument('--n_samples', type=int, default=16,
                         help='Samples per problem; pass@1 is averaged over these.')
     parser.add_argument('--dtype', default='bfloat16')
